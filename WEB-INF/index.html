@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>BUYER'S STOP</title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<body>
+
+ <h1 style="text-align: center;">PIZZA CORNER</h1>
+
+<h4 style="text-align: center;">ALL ITEMS AT Rs.99</h4>
+
+
+<div id="d1" style="position: absolute;top: 200px;left: 300px;">
+</div>
+
+<div style="position: absolute;top: 150px;left: 900px;">
+<button onclick="veg()">VEG</button>
+<button onclick="nveg()">NON-VEG</button>
+</div>
+<div id="d2" style="position: absolute;top: 200px;left: 900px;" onload="veg()">
+</div>
+
+<h4 style="position: absolute; top: 350px;left: 900px">Shopping Cart</h4>
+
+<div id="d3" style="position: absolute; top: 400px;left: 900px;">
+</div>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  var str="sdssudhu";
+  xhttp.onreadystatechange = function() {
+  	    if (this.readyState == 4 && this.status == 200) {
+    	alert("HAI");
+
+     document.getElementById("d1").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("POST", "user.jsp?q="+str, true);
+  xhttp.send("uname=sdssudhu");
+}
+
+function veg()
+{
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("d2").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "veg.html", true);
+  xhttp.send();
+}
+function nveg()
+{
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("d2").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "nonveg.html", true);
+  xhttp.send();
+}
+
+function f1(e)
+  {
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) 
+    {
+      document.getElementById("d1").innerHTML =this.responseText;
+    }
+  };
+  xhttp.open("GET","menu.jsp?fname="+e, true);
+  xhttp.send();
+  }
+
+  function f2(e)
+  {
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) 
+    {
+      document.getElementById("d3").innerHTML =this.responseText;
+    }
+
+  };
+  xhttp.open("GET","order?fname="+e, true);
+  xhttp.send("fname="+e);
+  }
+
+
+</script>
+
+</body>
+</html>

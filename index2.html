@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>BUYER'S STOP</title>
+  <style type="text/css">
+    button
+    {
+      border: none;
+      background:#cccccc;
+      margin:5px;
+      padding: 10px;
+    }
+    label
+    {
+      font-size: 20px;
+      font-weight: bold;
+      color: red;
+    }
+  </style>
+</head>
+
+<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<body style="background:#cccccc;">
+<div id="hh1" style="background-color:#000080;color: white;width: 100%;height:150px;">
+  <br />
+ <h1 style="text-align: center;">PIZZA CORNER</h1>
+
+<h4 style="text-align: center;">ALL ITEMS AT Rs.99</h4>
+<h3 style="position: absolute;left:1000px;top:20px;">CONTACT:066-22334455<h1>
+</div>
+<div id="d1" style="position: absolute;width:300px;margin:10px;font-size: 20px;font-weight:bold;background-color:red;color:white;border-radius:10px;top: 200px;left: 300px;">
+</div>
+<div style="position: absolute;top: 150px;left: 900px;">
+<h2>Select Category</h2>
+<button onclick="veg()"><label>VEG</label></button>
+<button onclick="nveg()">    <label>NON-VEG</label></button>
+</div>
+<div id="d2" style="position: absolute;top: 260px;left: 900px;" onload="veg()">
+</div>
+<div id="d5" style="position: absolute;top: 260px;left: 985px;" onload="nveg()">
+</div>
+
+<h4 style="position: absolute; top: 450px;left: 900px">Shopping Cart</h4>
+
+<div id="d3" style="position: absolute; top: 500px;left: 900px;">
+</div>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  var str="sdssudhu";
+  xhttp.onreadystatechange = function() {
+  	    if (this.readyState == 4 && this.status == 200) {
+    	alert("HAI");
+
+     document.getElementById("d1").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("POST", "user.jsp?q="+str, true);
+  xhttp.send("uname=sdssudhu");
+}
+
+function veg()
+{
+  document.getElementById("d5").innerHTML ="";
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("d2").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "veg.html", true);
+  xhttp.send();
+}
+function nveg()
+{
+  document.getElementById("d2").innerHTML ="";
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("d5").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "nonveg.html", true);
+  xhttp.send();
+}
+
+function f1(e)
+  {
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) 
+    {
+      document.getElementById("d1").innerHTML =this.responseText;
+    }
+  };
+  xhttp.open("GET","menu.jsp?fname="+e,true);
+  xhttp.send();
+  }
+function f2(e)
+  {
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) 
+    {
+      document.getElementById("d3").innerHTML =this.responseText;
+    }
+
+  };
+  xhttp.open("GET","order?fname="+e, true);
+  xhttp.send("fname="+e);
+  }
+
+
+function f3(e)
+  {
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) 
+    {
+      document.getElementById("d3").innerHTML =this.responseText;
+    }
+
+  };
+  xhttp.open("GET","order2?fname="+e, true);
+  xhttp.send("fname="+e);
+  }
+
+
+
+
+</script>
+
+</body>
+</html>
